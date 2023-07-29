@@ -37,11 +37,11 @@ HTTPADDR='https://'
 # to your location of admin.tok
 def getparams():
      global VIPERHOST, VIPERPORT, HTTPADDR
-     with open("/Viper-preprocess/admin.tok", "r") as f:
+     with open("/Viper-/admin.tok", "r") as f:
         VIPERTOKEN=f.read()
 
      if VIPERHOST=="":
-        with open('/Viper-preprocess/viper.txt', 'r') as f:
+        with open('/Viper-/viper.txt', 'r') as f:
           output = f.read()
           VIPERHOST = HTTPADDR + output.split(",")[0]
           VIPERPORT = output.split(",")[1]
@@ -56,7 +56,7 @@ if VIPERHOST=="":
 #                                     CREATE TOPICS IN KAFKA
 
 # Set personal data
-def datasetup(maintopic,preprocesstopic):
+def datasetup(maintopic,topic):
      companyname="OTICS"
      myname="Sebastian"
      myemail="Sebastian.Maurice"
@@ -202,7 +202,7 @@ latlong=lat:long'
      identifier = "IoT device performance and failures"
 
      # if dataage - use:dataage_utcoffset_timetype
-     preprocesslogic='anomprob,trend,avg'
+     preprocesslogic='min,max,diff' #Changed from anomprob,ted,avg to min,max,diff
      #preprocesslogic='dataage_-4_day,trend,min,max' # millisecond,second,minute,hour,day
      #preprocesslogic='dataage_-4_hour' # millisecond,second,minute,hour,day
 #     preprocesslogic='dataage_1_minute' # millisecond,second,minute,hour,day
